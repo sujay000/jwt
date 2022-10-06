@@ -24,13 +24,19 @@ const dashboard = async (req, res) => {
     }
 
     const token = authHeader.split(' ')[1]
-    console.log(token)
-
-    const luckyNumber = Math.floor(Math.random() * 100)
-    res.status(200).json({
-        msg: 'hello walla',
-        secret: `here is your data, ie your lucky number ${luckyNumber}`,
-    })
+    try {
+        var decoded = jwt.verify(token, process.env.JWT_SECRET)
+        const luckyNumber = Math.floor(Math.random() * 100)
+        res.status(200).json({
+            msg: 'hello walla',
+            secret: `here is your data ${decoded.username}, ie your lucky number ${luckyNumber}`,
+        })
+    } catch (err) {
+        throw new CustomAPIError(
+            'token was not correct, authorization not allowed',
+            401
+        )
+    }
 }
 
 module.exports = {
