@@ -1,0 +1,10 @@
+
+you need add the authorization 'header' in the request 
+the authorization header should start with the keyword 'Bearer' and then the token   
+
+
+Authorization: Bearer <token>
+
+Bearer + " " + token (basically space is also required)
+
+
