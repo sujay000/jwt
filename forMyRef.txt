@@ -12,3 +12,5 @@ Authorization: Bearer <token>
 Bearer + " " + token (basically space is also required)
 
 -----------------------------------------------------------------------
+
+can use 'http-status-codes' from npm for status codes
